@@ -2,21 +2,6 @@
 <html lang="en">
 <head>
     <%- include('partials/Head.ejs') %>
-    <style>
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        label {
-            margin: 10px 0;
-        }
-        input, textarea {
-            width: 50%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        </style>
 </head>
 <body>
     <%- include('partials/Navbar.ejs') %>
@@ -29,10 +14,8 @@
         <label class="body" for="body">Body</label>
         <textarea id="body" name="body" required></textarea>
         <button type="submit">Create Blog</button>
-        </form>
+    </form>
 
-        <%- include('partials/Footer.ejs') %>
+    <%- include('partials/Footer.ejs') %>
 </body>
-
-
 </html>

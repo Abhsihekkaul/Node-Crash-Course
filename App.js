@@ -5,10 +5,27 @@
 
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
 
+// connect to the database
+const DB = 'mongodb+srv://abhishekkaul32:qDfvWIIuu8jUcNAm@cluster0.zzvpg.mongodb.net/'
+mongoose.connect(DB)
+    .then(() => {
+        console.log("Connected to the database");
+        app.listen(8000,(req,res)=>{
+            console.log("Server is running on port 8000");
+        });
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
 // setting the view engine to ejs
 app.set('view engine', 'ejs');
+
+
+// setting the static files(css)
+app.use(express.static("public"));
 
 // Q : how is it able to find and render the index.ejs wihtout me giving it the file name 
 // A : because we have set the view engine to ejs and it automatically looks for the ejs file in the views folder (So we have to create a folder callled Views and put the ejs files in it)
@@ -60,7 +77,3 @@ app.use((req, res) => {
 
 
 
-// Listening to the port 8000
-app.listen(8000, () => {
-    console.log("The server is running on port 8000");
-});
