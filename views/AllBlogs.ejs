@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/Head.ejs') %>
+    <style>
+        .Blog {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <%- include('partials/Navbar.ejs') %>
+
+    <div class="Blog content">
+        <h1>Blogs</h1>
+        <% if (Blogs && Blogs.length > 0) { %>
+            <% Blogs.forEach((blog) => { %>
+                <h1><%= blog.Title %></h1>
+                <p><%= blog.Snippet %></p>
+            <% }) %>
+        <% } else { %>
+            <p>No blogs available</p>
+        <% } %>
+    </div>
+
+
+    <%- include('partials/Footer.ejs') %>
+</body>
+</html>

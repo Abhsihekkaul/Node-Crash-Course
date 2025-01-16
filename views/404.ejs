@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic HTML Page</title>
+    <%- include('partials/Head.ejs') %>
 </head>
 <body>
+    <%- include('partials/Navbar.ejs') %>
     <header>
         <h1>OOPS! Error 404</h1>
     </header>
     <main>
         <p>Page Not Found</p>
     </main>
+
+
+    <%- include('partials/Footer.ejs') %>
 </body>
 </html>
