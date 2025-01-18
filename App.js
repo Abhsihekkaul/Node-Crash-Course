@@ -6,6 +6,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const Blog = require("./Models/Blog");
 
 // connect to the database
 const DB = 'mongodb+srv://abhishekkaul32:qDfvWIIuu8jUcNAm@cluster0.zzvpg.mongodb.net/'
@@ -34,6 +35,54 @@ app.use(express.static("public"));
 app.get('/', (req, res) => {
     res.render("index")
 });
+
+
+// replicating the model saving data and showing data using Blog instance
+app.get("/add-blogs", (req,res)=>{
+    const blog = new Blog({
+        Title : 'Abhishek Kaul',
+        Snippet : "My name is Abhi",
+        Body : "Hello world"
+    });
+
+    blog.save()
+        .then((result)=>res.send(result))
+        .catch((err)=>console.log(err));
+})
+
+// the following route is the way to retrieve the data from the database 
+app.get("/see-All-Blogs", (req,res)=>{
+    Blog.find()
+        .then((result)=>{
+            res.send(result);
+        })
+        .catch((err)=>{
+            res.send(err);
+        })
+})
+
+// the following route is the way to retrieve single the data from the database by their respective id 
+app.get("/see-Single-Blog", (req,res)=>{
+    Blog.findById('6789c6ca0bb468ab23c1ad52')
+        .then((result)=>{
+            res.send(result);
+        })
+        .catch((err)=>{
+            res.send(err);
+        })
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.get('/about', (req, res) => {
